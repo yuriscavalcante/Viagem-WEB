@@ -1,0 +1,49 @@
+.main {
+  display: flex;
+  justify-content: right;
+  padding: 0;
+  background: green;
+  ion-card {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    width: 30vw;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    form {
+      display: flex;
+      flex-direction: column;
+      .item-input {
+        width: 30vw;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+        --border-radius: 10px;
+        --border-width: 1px;
+      }
+      .item-select{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 32.3vw;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+        --border-radius: 10px;
+        --border-width: 1px;
+      }
+    }
+  }
+}
+.content {
+  width: 30vw;
+  height: 80vh;
+}
+:host ion-button {
+  height: 5vh;
+}
+ion-label {
+  font-size: 20px;
+}
+a {
+  cursor: pointer;
+}

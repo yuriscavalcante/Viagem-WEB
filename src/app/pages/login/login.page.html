@@ -1,0 +1,124 @@
+<div class="main">
+  <ion-card>
+    <div *ngIf="isLogin">
+      <ion-card-header>
+        <ion-card-title>Login</ion-card-title>
+      </ion-card-header>
+      <form [formGroup]="loginForm" (ngSubmit)="login()">
+        <ion-item class="item-input">
+          <ion-input
+            label="Email"
+            type="email"
+            formControlName="email"
+            labelPlacement="floating"
+          ></ion-input>
+        </ion-item>
+        <ion-item class="item-input">
+          <ion-input
+            label="Senha"
+            type="password"
+            formControlName="password"
+            labelPlacement="floating"
+          ></ion-input>
+        </ion-item>
+        <ion-button class="button" type="submit" expand="full"
+          >Login</ion-button
+        >
+        <label
+          >Não tem uma conta? <a (click)="changeForm()">Cadastre-se</a></label
+        >
+      </form>
+    </div>
+    <div *ngIf="!isLogin">
+      <ion-card-header>
+        <ion-card-title>Cadastre-se</ion-card-title>
+      </ion-card-header>
+      <ion-content class="content">
+          <form [formGroup]="registerForm">
+            <ion-list class="list">
+              <ion-item class="item-input">
+                <ion-input
+                  label="Email"
+                  type="email"
+                  formControlName="email"
+                  labelPlacement="floating"
+                ></ion-input>
+              </ion-item>
+              <ion-item class="item-input">
+                <ion-input
+                  label="Senha"
+                  type="password"
+                  formControlName="password"
+                  labelPlacement="floating"
+                ></ion-input>
+              </ion-item>
+              <ion-item class="item-input">
+                <ion-input
+                  label="Confirme a Senha"
+                  type="password"
+                  formControlName="confPassword"
+                  labelPlacement="floating"
+                ></ion-input>
+              </ion-item>
+              <ion-item class="item-input">
+                <ion-input
+                  label="CNPJ"
+                  type="text"
+                  formControlName="cnpj"
+                  labelPlacement="floating"
+                ></ion-input>
+              </ion-item>
+              <ion-item class="item-input">
+                <ion-input
+                  label="Nome Social"
+                  type="text"
+                  formControlName="socialName"
+                  labelPlacement="floating"
+                ></ion-input>
+              </ion-item>
+              <ion-item class="item-input">
+                <ion-input
+                  label="Sigla"
+                  type="text"
+                  formControlName="acronym"
+                  labelPlacement="floating"
+                ></ion-input>
+              </ion-item>
+              <ion-item class="item-select">
+                  <ion-select aria-label="Fruit" interface="popover" formControlName="size" placeholder="Porte da Empresa">
+                    <ion-select-option value="Grande empresa">Grande empresa</ion-select-option>
+                    <ion-select-option value="Média empresa">Média empresa</ion-select-option>
+                    <ion-select-option value="Pequena empresa">Pequena empresa</ion-select-option>
+                    <ion-select-option value="Microempresa">Microempresa</ion-select-option>
+                  </ion-select>
+              </ion-item>
+              <ion-item class="item-input">
+                <ion-input
+                  label="Nome Completo"
+                  type="text"
+                  formControlName="fullName"
+                  labelPlacement="floating"
+                ></ion-input>
+              </ion-item>
+              <ion-item class="item-input">
+                <ion-input
+                  label="CPF"
+                  type="text"
+                  formControlName="cpf"
+                  labelPlacement="floating"
+                ></ion-input>
+              </ion-item>
+            </ion-list>
+        </form>
+      </ion-content>
+      <ion-button
+      class="button-register"
+      type="submit"
+      color="success"
+      expand="full"
+      (click)="register()"
+      >Cadastre-se</ion-button>
+    <label>Já tem uma conta? <a (click)="changeForm()">Logue</a></label>
+    </div>
+  </ion-card>
+</div>
