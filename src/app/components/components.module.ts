@@ -4,6 +4,7 @@ import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { MenuComponent } from './menu/menu.component';
+import { ListCardComponent } from './list-card/list-card.component';
 
 @NgModule({
   imports: [
@@ -14,9 +15,11 @@ import { MenuComponent } from './menu/menu.component';
   ],
   declarations: [
     MenuComponent,
+    ListCardComponent
   ],
   exports: [
-    MenuComponent
+    MenuComponent,
+    ListCardComponent
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

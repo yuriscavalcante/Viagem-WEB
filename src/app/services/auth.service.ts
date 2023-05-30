@@ -22,6 +22,7 @@ export class AuthService {
       cpf: userRegister.cpf,
       email: userRegister.email,
       fullName: userRegister.fullName,
+      isAdmin: true,
       uid: newUser.user.uid
     });
     return newUser.user.uid;

@@ -10,6 +10,26 @@ import { loading } from 'src/app/shared/loading';
 })
 export class HomePage implements OnInit {
   private loading = loading();
+  public arr = [
+    {
+      name: 'teste 1'
+    },
+    {
+      name: 'teste 2'
+    },
+    {
+      name: 'teste 3'
+    },
+    {
+      name: 'teste 4'
+    },
+    {
+      name: 'teste 5'
+    }
+  ];
+  public status = [
+    'Finalizado', 'Agendado', 'Em Aguardo'
+  ]
   constructor(
     private router: Router,
     private authService: AuthService
