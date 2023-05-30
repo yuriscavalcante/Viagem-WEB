@@ -11,6 +11,7 @@ import { provideAuth, getAuth } from '@angular/fire/auth'
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { environment } from 'src/environments/environment';
 import { InfiniteScrollCustomEvent } from '@ionic/angular';
+import { ComponentsModule } from './components/components.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -21,6 +22,7 @@ import { InfiniteScrollCustomEvent } from '@ionic/angular';
     provideFirestore(() => getFirestore()),
     provideAuth(() => getAuth()),
     AppRoutingModule,
+    ComponentsModule
   ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],

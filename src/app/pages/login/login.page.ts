@@ -48,9 +48,6 @@ export class LoginPage implements OnInit {
     }
     (await this.loading).present();
     const login = await this.authService.login(this.loginForm.value);
-    login.subscribe(res => {
-      sessionStorage.setItem('userData', JSON.stringify(res));
-    })
     this.loginForm.reset();
     (await this.loading).dismiss();
     this.router.navigate(['home']);
