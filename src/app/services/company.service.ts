@@ -13,6 +13,6 @@ export class CompanyService {
   private collection = collection(this.firestore, 'Company')
 
   async createCompany(company: ICompany) {
-    return await setDoc(doc(this.collection))
+    return await setDoc(doc(this.collection), company);
   }
 }

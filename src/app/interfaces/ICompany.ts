@@ -8,6 +8,6 @@ export interface ICompany {
     personas?: Array<String>;
     size: string;
     owner?: string;
-    createAt?: Timestamp;
-    updatedAt?: Timestamp;
+    createAt?: Date;
+    updatedAt?: Date;
 }
