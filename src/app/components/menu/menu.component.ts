@@ -1,5 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
+import { loading } from 'src/app/shared/loading';
 
 @Component({
   selector: 'app-menu',
@@ -13,17 +15,20 @@ export class MenuComponent  implements OnInit {
 
   constructor(
     private router: Router,
+    private authService: AuthService
   ) { }
 
   ngOnInit() {}
-
-  logout(){
-    this.isLogoutChange.emit(true);
+  private loading = loading();
+  async route(path: string) {
+    await this.router.navigate([`/${path}`]);
   }
 
-  async route(path: string) {
-    console.log(`/${path}`);
-    // await this.router.navigate([path]);
+  async logout(){
+    (await this.loading).present();
+    await this.authService.logout();
+    (await this.loading).dismiss();
+    await this.router.navigate(['login']);
   }
 
 }

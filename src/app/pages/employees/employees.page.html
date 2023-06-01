@@ -1,0 +1,11 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <app-menu></app-menu>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-list *ngFor="let e of employees">
+    <app-employee-card [employees]="e"></app-employee-card>
+  </ion-list>
+</ion-content>
