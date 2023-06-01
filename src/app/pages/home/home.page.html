@@ -2,14 +2,7 @@
   <ion-row>
     <app-menu (isLogoutChange)="logout($event)"></app-menu>
   </ion-row>
-  <ion-row >
-    <ion-col *ngFor="let s of status" size="auto">
-      <ion-list-header>
-        <ion-label>{{s}}</ion-label>
-      </ion-list-header>
-      <ion-list *ngFor="let a of arr" lines="full">
-       <app-list-card></app-list-card>
-      </ion-list>
-    </ion-col>
+  <ion-row>
+   <div class="image"></div>
   </ion-row>
 </ion-grid>
