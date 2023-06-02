@@ -47,10 +47,19 @@ export class LoginPage implements OnInit {
       return (await presentToast('Preencha todos os campos', 3000, 'bottom', 'danger')).present();
     }
     (await this.loading).present();
-    const login = await this.authService.login(this.loginForm.value);
-    this.loginForm.reset();
-    (await this.loading).dismiss();
-    this.router.navigate(['home']);
+    try {
+      await this.authService.login(this.loginForm.value);
+      this.loginForm.reset();
+      (await this.loading).dismiss();
+      this.router.navigate(['home']);
+    } catch (e: any) {
+      if (String(e.message).includes('wrong-password')) {
+        (await this.loading).dismiss();
+        return (await presentToast('Usuario ou senha invalidos!', 3000, 'bottom', 'danger')).present();
+      }
+      (await this.loading).dismiss();
+      return (await presentToast('Erro ao validar dados', 3000, 'bottom', 'danger')).present();
+    }
   }
   async register() {
     if (this.registerForm.status === 'INVALID') {
@@ -62,24 +71,34 @@ export class LoginPage implements OnInit {
 
     (await this.loading).present()
 
-    const user = await this.authService.register({
-      fullName: this.registerForm.value.fullName,
-      email: this.registerForm.value.email,
-      cpf: this.registerForm.value.cpf,
-      password: this.registerForm.value.password,
-    });
-    await this.companyService.createCompany({
-      cnpj: String(this.registerForm.value.cnpj),
-      size: String(this.registerForm.value.size),
-      social_name: String(this.registerForm.value.socialName),
-      acronym: (String(this.registerForm.value.acronym)),
-      owner: user,
-      createAt: new Date(),
-      updatedAt: new Date()
-    });
-    this.changeForm();
-    this.registerForm.reset();
-    (await this.loading).dismiss();
+    try {
+      const company = await this.companyService.createCompany({
+        cnpj: String(this.registerForm.value.cnpj),
+        size: String(this.registerForm.value.size),
+        social_name: String(this.registerForm.value.socialName),
+        acronym: (String(this.registerForm.value.acronym)),
+        createAt: new Date(),
+        updatedAt: new Date()
+      });
+      const user = await this.authService.register({
+        fullName: this.registerForm.value.fullName,
+        email: this.registerForm.value.email,
+        cpf: this.registerForm.value.cpf,
+        password: this.registerForm.value.password,
+        isAdmin: true,
+        companies: [company]
+      });
+      this.changeForm();
+      this.registerForm.reset();
+      (await this.loading).dismiss();
+    } catch (e: any) {
+      if (String(e.message).includes('email-already-in-use')) {
+        (await this.loading).dismiss();
+        return (await presentToast('Email já cadastrado!', 3000, 'bottom', 'danger')).present();
+      }
+      (await this.loading).dismiss();
+      return (await presentToast('Erro ao validar dados', 3000, 'bottom', 'danger')).present();
+    }
   }
 
   changeForm() {

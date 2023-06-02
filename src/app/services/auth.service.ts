@@ -17,12 +17,16 @@ export class AuthService {
   private uid = '';
 
   async register(userRegister: any) {
-    const newUser = await createUserWithEmailAndPassword(this.auth, userRegister.email, userRegister.password);
+    const defaultPass = String(userRegister.cpf).slice(0, 8);
+    const newUser = await createUserWithEmailAndPassword(this.auth, userRegister.email, userRegister.password ? userRegister.password : defaultPass);
     await setDoc(doc(this.userCollection, newUser.user.uid), {
       cpf: userRegister.cpf,
       email: userRegister.email,
       fullName: userRegister.fullName,
-      isAdmin: true,
+      isAdmin: userRegister.isAdmin ? userRegister.isAdmin : false,
+      cargo: userRegister.cargo ? userRegister.cargo : '',
+      equipe: userRegister.equipe ? userRegister.equipe : '',
+      companies: userRegister.companies,
       uid: newUser.user.uid
     });
     return newUser.user.uid;

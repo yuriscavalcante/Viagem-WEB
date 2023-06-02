@@ -6,6 +6,7 @@
       </ion-toolbar>
     </ion-header>
     <ion-content class="ion-padding">
+      <ion-item [button]="true" [detail]="false" (click)="route('home')">Inicio</ion-item>
       <ion-item [button]="true" [detail]="false" (click)="route('company')">Empresa</ion-item>
       <ion-item [button]="true" [detail]="false" (click)="route('employees')">Funcionarios</ion-item>
       <ion-item [button]="true" [detail]="false">Cargos</ion-item>
@@ -34,7 +35,7 @@
             </ng-template>
           </ion-popover>
         </ion-buttons>
-        <ion-title>Menu</ion-title>
+        <ion-title></ion-title>
       </ion-toolbar>
     </ion-header>
   </div>
