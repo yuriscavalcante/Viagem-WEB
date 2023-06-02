@@ -72,20 +72,21 @@ export class LoginPage implements OnInit {
     (await this.loading).present()
 
     try {
+      const company = await this.companyService.createCompany({
+        cnpj: String(this.registerForm.value.cnpj),
+        size: String(this.registerForm.value.size),
+        social_name: String(this.registerForm.value.socialName),
+        acronym: (String(this.registerForm.value.acronym)),
+        createAt: new Date(),
+        updatedAt: new Date()
+      });
       const user = await this.authService.register({
         fullName: this.registerForm.value.fullName,
         email: this.registerForm.value.email,
         cpf: this.registerForm.value.cpf,
         password: this.registerForm.value.password,
-      });
-      await this.companyService.createCompany({
-        cnpj: String(this.registerForm.value.cnpj),
-        size: String(this.registerForm.value.size),
-        social_name: String(this.registerForm.value.socialName),
-        acronym: (String(this.registerForm.value.acronym)),
-        owner: user,
-        createAt: new Date(),
-        updatedAt: new Date()
+        isAdmin: true,
+        companies: [company]
       });
       this.changeForm();
       this.registerForm.reset();

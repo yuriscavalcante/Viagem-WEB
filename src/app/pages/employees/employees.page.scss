@@ -1,0 +1,16 @@
+ion-grid {
+    padding: 15px;
+    .buttons {
+        justify-content: right;
+    }
+    ion-row {
+        height: 8vh;
+        
+        ion-content {
+            border: 1px;
+            height: 80vh;
+            width: 95vw;
+        }
+    }
+}
+
