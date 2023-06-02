@@ -1,0 +1,21 @@
+<ion-card>
+  <ion-card-title>{{employees.nome}}</ion-card-title>
+  <ion-card-content class="main">
+    <ion-grid>
+      <ion-row>
+        <ion-col size="11">
+          <div class="content">
+            <label>Email: {{employees.email}}</label>
+            <label>Cpf: {{employees.cpf}}</label>
+            <label>Cargo: {{employees.cargo}}</label>
+          </div>
+        </ion-col>
+        <ion-col>
+          <ion-button size="small" shape="round" color="warning"><ion-icon
+              name="create-outline"></ion-icon></ion-button>
+          <ion-button size="small" shape="round" color="danger"><ion-icon name="trash-outline"></ion-icon></ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-card-content>
+</ion-card>
