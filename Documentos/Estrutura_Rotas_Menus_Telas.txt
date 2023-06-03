@@ -17,10 +17,10 @@ Menus lateral
 
 	- Tela de gerenciamrento de funcionarios (ADM)
 		- Listar funcionarios - Ok
-		- Modal Editar cargos dos funcionarios
-		- Modal Editar equipes dos funcionarios
+		- Modal Editar cargos dos funcionarios 
+		- Modal Editar equipes dos funcionarios 
 		- Resetar senha do usuario para uma senha padrão
-		- Inativar funcinarios
+		- Inativar funcionarios - Ok
 		- Modal de cadastro de funcionarios (ADM) - Ok
 			- campos {CPF, NOME, e-mail, senha (senha padrão 8 primeiros numeros cpf), cargo, equipe*, Definir como administrativo:Boolean}
 			- aviso de validação no cadastro de funcinario

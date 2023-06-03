@@ -23,12 +23,18 @@ export class AuthService {
       email: userRegister.email,
       fullName: userRegister.fullName,
       isAdmin: userRegister.isAdmin ? userRegister.isAdmin : false,
+      isActive: true,
       cargo: userRegister.cargo ? userRegister.cargo : '',
       equipe: userRegister.equipe ? userRegister.equipe : '',
       companies: userRegister.companies,
       uid: newUser.user.uid
     });
     return newUser.user.uid;
+  }
+
+  async isActive(uid: string, isActive: boolean) {
+    const docRef = doc(this.userCollection, uid);
+    await updateDoc(docRef, {isActive: isActive});
   }
 
   async login(userLogin: any) {

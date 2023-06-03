@@ -20,7 +20,7 @@ export class EmployeesPage implements OnInit {
   ) { }
 
   async ngOnInit() {
-    this.employees = await this.authService.listEmployees(this.userData.companies[0]);
+    this.employees = await this.authService.listEmployees(this.userData.companies);
   }
   registerForm = this.formBuilder.group({
     email: ['', [Validators.required, Validators.email]],
@@ -36,16 +36,24 @@ export class EmployeesPage implements OnInit {
     this.isModalOpen = !this.isModalOpen;
   }
 
+  async reload(reload: boolean) {
+    if(reload) {
+      (await this.loading).present();
+      this.employees = await this.authService.listEmployees(this.userData.companies);
+      (await this.loading).dismiss();
+    }
+  }
+
   async register(){
     const session = JSON.parse(String(sessionStorage.getItem('userData')));
+    (await this.loading).present();
     try {
-      (await this.loading).present();
       await this.authService.register({
         fullName: this.registerForm.value.fullName,
         email: this.registerForm.value.email,
         cpf: this.registerForm.value.cpf,
         isAdmin: false,
-        companies: session.companies[0],
+        companies: session.companies,
       });
       this.registerForm.reset();
       this.setOpen();

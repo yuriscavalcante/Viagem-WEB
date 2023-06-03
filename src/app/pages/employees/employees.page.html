@@ -8,7 +8,7 @@
   <ion-row>
     <ion-content> 
       <ion-list *ngFor="let e of employees">
-        <app-employee-card [employees]="e"></app-employee-card>
+        <app-employee-card [employees]="e" (isReloadEvent)="reload($event)"></app-employee-card>
       </ion-list>
     </ion-content>
   </ion-row>
