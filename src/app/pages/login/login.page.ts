@@ -69,7 +69,7 @@ export class LoginPage implements OnInit {
       return (await presentToast('Senhas não combinam!', 3000, 'bottom', 'danger')).present();
     }
 
-    (await this.loading).present()
+    (await this.loading).present();
 
     try {
       const company = await this.companyService.createCompany({
@@ -88,6 +88,7 @@ export class LoginPage implements OnInit {
         isAdmin: true,
         companies: [company]
       });
+      (await presentToast('Usuario cadastrado com sucesso!', 3000, 'bottom', 'success')).present();
       this.changeForm();
       this.registerForm.reset();
       (await this.loading).dismiss();

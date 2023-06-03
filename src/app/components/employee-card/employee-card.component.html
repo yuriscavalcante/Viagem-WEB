@@ -1,21 +1,90 @@
 <ion-card>
-  <ion-card-title>{{employees.nome}}</ion-card-title>
+  <ion-card-title>{{ employees.fullName }}</ion-card-title>
   <ion-card-content class="main">
     <ion-grid>
       <ion-row>
         <ion-col size="11">
           <div class="content">
-            <label>Email: {{employees.email}}</label>
-            <label>Cpf: {{employees.cpf}}</label>
-            <label>Cargo: {{employees.cargo}}</label>
+            <label>Email: {{ employees.email }}</label>
+            <label>Cpf: {{ employees.cpf }}</label>
+            <label>Cargo: {{ employees.cargo }}</label>
           </div>
         </ion-col>
         <ion-col>
-          <ion-button size="small" shape="round" color="warning"><ion-icon
-              name="create-outline"></ion-icon></ion-button>
-          <ion-button size="small" shape="round" color="danger"><ion-icon name="trash-outline"></ion-icon></ion-button>
+          <ion-button
+            size="small"
+            shape="round"
+            color="warning"
+            (click)="setOpen()"
+            ><ion-icon name="create-outline"></ion-icon
+          ></ion-button>
+          <ion-button
+            *ngIf="!employees.isActive"
+            size="small"
+            shape="round"
+            color="success"
+            (click)="openAlert()"
+            ><ion-icon name="checkmark-outline"></ion-icon
+          ></ion-button>
+          <ion-button
+            *ngIf="employees.isActive"
+            size="small"
+            shape="round"
+            color="danger"
+            (click)="openAlert()"
+            ><ion-icon name="close-outline"></ion-icon
+          ></ion-button>
         </ion-col>
       </ion-row>
     </ion-grid>
   </ion-card-content>
 </ion-card>
+
+<ion-alert
+  [isOpen]="isAlertOpen"
+  header= {{header}}
+  [buttons]="alertButtons"
+></ion-alert>
+
+<ion-modal [isOpen]="isModalOpen">
+  <ng-template>
+    <ion-content>
+      <ion-header>
+        <ion-toolbar>
+          <ion-title>Editar dados do funcionario</ion-title>
+        </ion-toolbar>
+      </ion-header>
+      <form [formGroup]="registerForm" (ngSubmit)="update()">
+        <ion-item class="item-input">
+          <ion-input
+            label="Email"
+            type="email"
+            formControlName="email"
+            placeholder="exemplo@email.com"
+            labelPlacement="floating"
+          ></ion-input>
+        </ion-item>
+        <ion-item class="item-input">
+          <ion-input
+            label="CPF"
+            type="text"
+            formControlName="cpf"
+            placeholder="000.000.000-00"
+            labelPlacement="floating"
+          ></ion-input>
+        </ion-item>
+        <ion-item class="item-input">
+          <ion-input
+            label="Nome Completo"
+            type="text"
+            formControlName="fullName"
+            labelPlacement="floating"
+          ></ion-input>
+        </ion-item>
+        <ion-button class="button" color="success" type="submit" expand="full"
+          >Salvar</ion-button
+        >
+      </form>
+    </ion-content>
+  </ng-template>
+</ion-modal>
