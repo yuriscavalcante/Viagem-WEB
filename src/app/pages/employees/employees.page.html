@@ -6,7 +6,7 @@
     <ion-button id="open-modal" color="success" (click)="setOpen()">Adicionar funcionario</ion-button>
   </ion-row>
   <ion-row>
-    <ion-content> 
+    <ion-content>
       <ion-list *ngFor="let e of employees">
         <app-employee-card [employees]="e" (isReloadEvent)="reload($event)"></app-employee-card>
       </ion-list>
