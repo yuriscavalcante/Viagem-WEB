@@ -1,0 +1,58 @@
+<ion-grid>
+  <ion-row>
+    <app-menu></app-menu>
+  </ion-row>
+  <ion-row class="buttons">
+    <ion-button id="open-modal" color="success" (click)="setOpen()">Adicionar funcionario</ion-button>
+  </ion-row>
+  <ion-row>
+    <ion-content> 
+      <ion-list *ngFor="let e of employees">
+        <app-employee-card [employees]="e" (isReloadEvent)="reload($event)"></app-employee-card>
+      </ion-list>
+    </ion-content>
+  </ion-row>
+</ion-grid>
+
+<ion-modal [isOpen]="isModalOpen">
+  <ng-template>
+    <ion-content>
+      <ion-header>
+        <ion-toolbar>
+          <ion-title>Adicionar funcionario</ion-title>
+        </ion-toolbar>
+      </ion-header>
+      <form [formGroup]="registerForm" (ngSubmit)="register()">
+        <ion-item class="item-input">
+          <ion-input
+            label="Email"
+            type="email"
+            formControlName="email"
+            placeholder="exemplo@email.com"
+            labelPlacement="floating"
+          ></ion-input>
+        </ion-item>
+        <ion-item class="item-input">
+          <ion-input
+            label="CPF"
+            type="text"
+            formControlName="cpf"
+            placeholder="000.000.000-00"
+            labelPlacement="floating"
+          ></ion-input>
+        </ion-item>
+        <ion-item class="item-input">
+          <ion-input
+            label="Nome Completo"
+            type="text"
+            formControlName="fullName"
+            labelPlacement="floating"
+          ></ion-input>
+        </ion-item>
+        <ion-button class="button" color="success" type="submit" expand="full"
+          >Salvar</ion-button
+        >
+      </form>
+    </ion-content>
+  </ng-template>
+</ion-modal>

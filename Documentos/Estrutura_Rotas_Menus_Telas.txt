@@ -1,13 +1,13 @@
 
 Fora do Sistema
  - Tela Login
-	- aviso de senha ou usuario incorreto
-	- aviso de validação no cadastro
-	- aviso de preenchimento de todos os campos
+	- aviso de senha ou usuario incorreto - OK
+	- aviso de validação no cadastro - OK
+	- aviso de preenchimento de todos os campos - OK
 	
  - Tela de Cadastro
-	- aviso de cadastro realizado e redirecionar para login
-	- aviso de cadastro ja existente
+	- aviso de cadastro realizado e redirecionar para login - OK
+	- aviso de cadastro ja existente - OK
 
 Menus lateral
 
@@ -16,14 +16,13 @@ Menus lateral
 		
 
 	- Tela de gerenciamrento de funcionarios (ADM)
-		- Listar funcionarios
-		- Modal Editar cargos dos funcionarios
-		- Modal Editar equipes dos funcionarios
+		- Listar funcionarios - Ok
+		- Modal Editar cargos dos funcionarios 
+		- Modal Editar equipes dos funcionarios 
 		- Resetar senha do usuario para uma senha padrão
-		- Inativar funcinarios
-		- Modal de cadastro de funcionarios (ADM)
-			- campos {CPF, NOME, e-mail, senha, cargo, equipe*, Definir como administrativo:Boolean}
-			- aviso de senha ou usuario incorreto
+		- Inativar funcionarios - Ok
+		- Modal de cadastro de funcionarios (ADM) - Ok
+			- campos {CPF, NOME, e-mail, senha (senha padrão 8 primeiros numeros cpf), cargo, equipe*, Definir como administrativo:Boolean}
 			- aviso de validação no cadastro de funcinario
 	
 	- Tela Gerencia de Cargos
