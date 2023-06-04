@@ -9,6 +9,7 @@
 UserInterfaceState.xcuserstate
 $RECYCLE.BIN/
 
+/yarn.lock
 *.log
 log.txt
 
