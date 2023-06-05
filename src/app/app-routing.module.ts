@@ -16,13 +16,22 @@ const routes: Routes = [
     path: '',
     redirectTo: 'login',
     pathMatch: 'full'
-  },  {
+  },
+  {
     path: 'company',
     loadChildren: () => import('./pages/company/company.module').then( m => m.CompanyPageModule)
   },
   {
     path: 'employees',
     loadChildren: () => import('./pages/employees/employees.module').then( m => m.EmployeesPageModule)
+  },
+  {
+    path: 'positions',
+    loadChildren: () => import('./pages/positions/positions.module').then( m => m.PositionsPageModule)
+  },
+  {
+    path: 'teams',
+    loadChildren: () => import('./pages/teams/teams.module').then( m => m.TeamsPageModule)
   },
 
 ];
