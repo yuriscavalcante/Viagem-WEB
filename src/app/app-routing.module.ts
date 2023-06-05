@@ -27,6 +27,14 @@ const routes: Routes = [
     loadChildren: () => import('./pages/employees/employees.module').then( m => m.EmployeesPageModule),
     canActivate: [IsAdminGuard]
   },
+  {
+    path: 'positions',
+    loadChildren: () => import('./pages/positions/positions.module').then( m => m.PositionsPageModule)
+  },
+  {
+    path: 'teams',
+    loadChildren: () => import('./pages/teams/teams.module').then( m => m.TeamsPageModule)
+  },
 
 ];
 
