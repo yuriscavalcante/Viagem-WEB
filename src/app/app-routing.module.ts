@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './guards/auth.guard';
+import { IsAdminGuard } from './guards/is-admin.guard';
 
 const routes: Routes = [
   {
@@ -16,13 +17,15 @@ const routes: Routes = [
     path: '',
     redirectTo: 'login',
     pathMatch: 'full'
-  },  {
+  },
+  {
     path: 'company',
     loadChildren: () => import('./pages/company/company.module').then( m => m.CompanyPageModule)
   },
   {
     path: 'employees',
-    loadChildren: () => import('./pages/employees/employees.module').then( m => m.EmployeesPageModule)
+    loadChildren: () => import('./pages/employees/employees.module').then( m => m.EmployeesPageModule),
+    canActivate: [IsAdminGuard]
   },
 
 ];

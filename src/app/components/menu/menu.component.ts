@@ -8,17 +8,25 @@ import { loading } from 'src/app/shared/loading';
   templateUrl: './menu.component.html',
   styleUrls: ['./menu.component.scss'],
 })
-export class MenuComponent  implements OnInit {
+export class MenuComponent implements OnInit {
 
   @Input() isLogout: boolean = false;
   @Output() isLogoutChange = new EventEmitter<boolean>();
+  public userData: any;
 
   constructor(
     private router: Router,
     private authService: AuthService
-  ) { }
+  ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.userData = JSON.parse(String(sessionStorage.getItem('userData')));
+  }
+
+  ngOnDestroy(){
+    console.log("destroying child...")
+  }
+
   private loading = loading();
   async route(path: string) {
     await this.router.navigate([`/${path}`]);
